@@ -811,7 +811,7 @@ local Window = function(Settings: Configuration)
 
 	Scope:Observer(Minimized):onChange(function()
 		local Minimize = Scoper.Unwrap(Minimized);
-		Transparency.ControlTransparency(Component, 0.25, (Minimize and 0.5) or (Settings.Transparency or 0));
+		Transparency.ControlTransparency(Component, 0.25, (Minimize and 0.5) or (Scoper.Unwrap(Window.Themes.WindowTransparency) or 0));
 	end)
 	
 	Scope:Observer(Closed):onChange(function()
@@ -832,7 +832,7 @@ local Window = function(Settings: Configuration)
 			
 			if (MousePos and Size and UIPos) then
 				local Mode = (function()
-					if (Type) == "BottomLeft" then
+					if (Type.Name == "BottomLeft") then
 						return ({ X = Vector2.new(-1, 0), Y = Vector2.new(0, 1) });
 					else
 						return ({ X = Vector2.new(1, 0), Y = Vector2.new(0, 1) });

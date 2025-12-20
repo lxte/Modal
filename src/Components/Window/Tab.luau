@@ -20,13 +20,14 @@ local Tab = function(Window)
 	local Components = ({});
 	
 	Components.CreateScrollingFrame = function(Use, Scope, Index, Value)
-		local Object; Object = Scope:New "ScrollingFrame" {
+		local Object
+		Object = Scope:New "ScrollingFrame" {
 			Name = Value.Title,
 			Active = true,
 			ScrollBarThickness = 3,
 			BackgroundTransparency = 1,
 			Position = UDim2.new(0, 0, 0, 7),
-			Size = UDim2.new(1, 0, 1, -10),
+			Size = UDim2.new(1, 0, 1, -14),
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 			CanvasSize = UDim2.new(),
 			AutomaticCanvasSize = Enum.AutomaticSize.Y,
@@ -35,7 +36,6 @@ local Tab = function(Window)
 			[Children] = {
 				Scope:New "UIPadding" {
 					Name = "UIPadding",
-					PaddingBottom = UDim.new(0, 1),
 					PaddingTop = Animate(function(Use)
 						local Active = (Use(Window.CurrentTab) or "None") == Value.Title
 						local Padding = (Active and 1) or 10
@@ -74,8 +74,8 @@ local Tab = function(Window)
 			local NewTransparency = (Active and WindowTransparency) or 1
 			
 			Transparency.ControlTransparency(Object, 0.15, NewTransparency) 
-			
 			Object.Visible = true
+			
 			task.delay(0.15, function()
 				Object.Visible = Active
 			end)

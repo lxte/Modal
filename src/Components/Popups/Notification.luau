@@ -215,7 +215,7 @@ Notification.new = function(Settings: Configuration, Window)
 										BackgroundColor3 = Color,
 										BackgroundTransparency = 0.7,
 										Position = UDim2.new(0, -15, 0.5, 0),
-										Size = UDim2.new(0, 3, 1, 7),
+										Size = UDim2.new(0, 3, 1, 3),
 									},
 								}
 							},
@@ -249,7 +249,7 @@ Notification.new = function(Settings: Configuration, Window)
 	task.wait();
 	
 	NotificationSize:set(UDim2.fromOffset(AbsoluteSize.X + 5, AbsoluteSize.Y + 5))
-	Transparency.ControlTransparency(Component, 0.3, Scoper.Unwrap(Window.Themes.WindowTransparency) / 2);
+	Transparency.ControlTransparency(Component, 0.3, math.clamp(Scoper.Unwrap(Window.Themes.WindowTransparency) / 2, 0.15, 1));
 
 	task.delay(Settings.Duration or 5, function()
 		if (not Scoper.IsPoisoned(Scope)) then

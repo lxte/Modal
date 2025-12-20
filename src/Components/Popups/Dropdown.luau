@@ -201,7 +201,7 @@ Dropdown.new = function(Settings: Configuration, Window)
 
 								[Children] = {
 									Scope:New "UICorner" {
-										CornerRadius = UDim.new(1, 0),
+										CornerRadius = UDim.new(0.4, 0),
 									},
 
 									Scope:New "TextLabel" {

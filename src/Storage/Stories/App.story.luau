@@ -268,9 +268,10 @@ local Story = {
 			
 			table.insert(Scope, UserInputService.InputBegan:Connect(function(Input)
 				if (Modal:IsCorrectInput(Input, ScriptSettings.NotificationKey)) then
+					local Description = string.rep("a", math.random(20, 100));
 					Window:Notify({
 						Title = "Modal",
-						Description = "Keybind triggered",
+						Description = Description,
 						Duration = 5,
 						Type = "Success"
 					})
